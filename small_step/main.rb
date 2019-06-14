@@ -64,13 +64,23 @@ class Multiply < Struct.new(:left, :right)
 
 end
 
-expression = Add.new(
-Multiply.new(Number.new(1), Number.new(2)),
-Multiply.new(Number.new(3), Number.new(4))
-)
-puts expression
+class Machine < Struct.new(:expression)
+  def step
+    self.expression = expression.reduce
+  end
 
-while expression.reducible?
-    expression = expression.reduce()
-    puts expression 
+  def run
+    while expression.reducible?
+      puts expression
+      step
+    end
+    puts expression
+  end
 end
+
+Machine.new(
+    Add.new(
+        Multiply.new(Number.new(1), Number.new(2)),
+        Multiply.new(Number.new(3), Number.new(4))
+    )
+).run
