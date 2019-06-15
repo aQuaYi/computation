@@ -36,7 +36,6 @@ class Add < Struct.new(:left, :right)
       Number.new(left.value + right.value)
     end
   end
-
 end
 
 class Multiply < Struct.new(:left, :right)
@@ -61,7 +60,6 @@ class Multiply < Struct.new(:left, :right)
       Number.new(left.value * right.value)
     end
   end
-
 end
 
 class Machine < Struct.new(:expression)
@@ -79,8 +77,8 @@ class Machine < Struct.new(:expression)
 end
 
 Machine.new(
-    Add.new(
-        Multiply.new(Number.new(1), Number.new(2)),
-        Multiply.new(Number.new(3), Number.new(4))
-    )
+  Add.new(
+    Multiply.new(Number.new(1), Number.new(2)),
+    Multiply.new(Number.new(3), Number.new(4))
+  )
 ).run
