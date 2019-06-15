@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'number'
 
 class Add < Struct.new(:left, :right)

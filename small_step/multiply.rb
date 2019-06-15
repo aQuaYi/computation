@@ -1,4 +1,6 @@
-require_relative "number"
+# frozen_string_literal: true
+
+require_relative 'number'
 
 class Multiply < Struct.new(:left, :right)
   def to_s

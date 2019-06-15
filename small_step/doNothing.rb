@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DoNothing
   def to_s
     'do-nothing'
@@ -7,8 +9,8 @@ class DoNothing
     "«#{self}»"
   end
 
-  def ==(other_statement)
-    other_statement.instance_of?(DoNothing)
+  def ==(other)
+    other.instance_of?(DoNothing)
   end
 
   def reducible?

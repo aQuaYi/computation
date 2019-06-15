@@ -1,4 +1,6 @@
-require_relative "doNothing"
+# frozen_string_literal: true
+
+require_relative 'doNothing'
 
 class Assign < Struct.new(:name, :expression)
   def to_s
@@ -17,7 +19,7 @@ class Assign < Struct.new(:name, :expression)
     if expression.reducible?
       [Assign.new(name, expression.reduce(environment)), environment]
     else
-      [DoNothing.new, environment.merge({name => expression})]
+      [DoNothing.new, environment.merge(name => expression)]
     end
   end
 end

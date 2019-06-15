@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Variable < Struct.new(:name)
   def to_s
     name.to_s

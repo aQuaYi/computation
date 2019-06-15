@@ -1,4 +1,6 @@
-require_relative "all"
+# frozen_string_literal: true
+
+require_relative 'all'
 
 class Machine
   def self.new(syntax, *args)
@@ -17,9 +19,8 @@ class Machine
 end
 
 # 虚拟机分为了 expression 和 statement 两种是因为
-# 执行 statement 语句以后，需要返回新的 environment 
-# 这和 expression 执行时，有本质的区别
-
+# 执行 statement 语句以后，需要返回新的 environment
+# 这和 expression 执行时，不需要
 
 class ExpressionMachine < Struct.new(:expression, :environment)
   def step
