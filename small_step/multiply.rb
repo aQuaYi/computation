@@ -16,13 +16,14 @@ class Multiply < Struct.new(:left, :right)
   end
 
   def reduce(environment)
-    if left.reducible?
-      Multiply.new(left.reduce(environment), right)
+        if left.reducible?
+      left_reduce, environment = left.reduce(environment)
+      [Multiply.new(left_reduce, right), environment]
     elsif right.reducible?
-      Multiply.new(left, right.reduce(environment))
+      right_reduce, environment = right.reduce(environment)
+      [Multiply.new(left, right.reduce(environment)), environment]
     else
-      Number.new(left.value * right.value)
+[      Number.new(left.value * right.value),environment]
     end
   end
-
 end

@@ -1,4 +1,6 @@
-require_relative "boolean"
+# frozen_string_literal: true
+
+require_relative 'boolean'
 
 class LessThan < Struct.new(:left, :right)
   def to_s
@@ -15,12 +17,13 @@ class LessThan < Struct.new(:left, :right)
 
   def reduce(environment)
     if left.reducible?
-      LessThan.new(left.reduce(environment), right)
+      left_reduce, environment = left.reduce(environment)
+      [LessThan.new(left_reduce, right), environment]
     elsif right.reducible?
-      LessThan.new(left, right.reduce(environment))
+      right_reduce, environment = right.reduce(environment)
+      [LessThan.new(left, right_reduce), environment]
     else
-      Boolean.new(left.value < right.value)
+      [Boolean.new(left.value < right.value), environment]
     end
   end
-
 end

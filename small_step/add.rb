@@ -17,11 +17,13 @@ class Add < Struct.new(:left, :right)
 
   def reduce(environment)
     if left.reducible?
-      Add.new(left.reduce(environment), right)
+      left_reduce,  environment = left.reduce(environment)
+      [Add.new(left_reduce, right), environment]
     elsif right.reducible?
-      Add.new(left, right.reduce(environment))
+      right_reduce, environment = right.reduce(environment)
+      [Add.new(left, right_reduce), environment]
     else
-      Number.new(left.value + right.value)
+      [Number.new(left.value + right.value), environment]
     end
   end
 end

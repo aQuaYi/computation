@@ -78,3 +78,14 @@ puts '-----------------------------------------'
 #   ),
 #   {}
 # ).run
+
+puts '-----------------------------------------'
+
+Machine.new(
+  Add.new(Number.new(1),
+          Add.new(Number.new(2),
+                  Add.new(Number.new(3),
+                          Add.new(Number.new(4),
+                                  Add.new(Number.new(5), Number.new(6)))))),
+  x: Number.new(2)
+).run

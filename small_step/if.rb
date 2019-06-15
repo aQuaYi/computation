@@ -17,7 +17,8 @@ class If < Struct.new(:condition, :consequence, :alternative)
 
   def reduce(environment)
     if condition.reducible?
-      [If.new(condition.reduce(environment), consequence, alternative), environment]
+      condition_reduce ,environment= condition.reduce(environment)
+      [If.new(condition_reduce, consequence, alternative), environment]
     else
       case condition
       when Boolean.new(true)
