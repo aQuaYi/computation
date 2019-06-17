@@ -9,11 +9,7 @@ class Variable < Struct.new(:name)
     "«#{self}»"
   end
 
-  def reducible?
-    true
-  end
-
-  def reduce(environment)
-    [environment[name],environment]
+  def evaluate(environment)
+    environment[name]
   end
 end

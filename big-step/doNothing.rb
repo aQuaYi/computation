@@ -13,7 +13,7 @@ class DoNothing
     other.instance_of?(DoNothing)
   end
 
-  def reducible?
-    false
+  def evaluate(environment)
+    environment
   end
 end

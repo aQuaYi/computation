@@ -11,21 +11,12 @@ class If < Struct.new(:condition, :consequence, :alternative)
     "«#{self}»"
   end
 
-  def reducible?
-    true
-  end
-
-  def reduce(environment)
-    if condition.reducible?
-      condition_reduce ,environment= condition.reduce(environment)
-      [If.new(condition_reduce, consequence, alternative), environment]
-    else
-      case condition
-      when Boolean.new(true)
-        [consequence, environment]
-      when Boolean.new(false)
-        [alternative, environment]
-      end
+  def evaluate(environment)
+    case condition.evaluate(environment)
+    when Boolean.new(true)
+      consequence.evaluate(environment)
+    when Boolean.new(false)
+      alternative.evaluate(environment)
     end
   end
 end

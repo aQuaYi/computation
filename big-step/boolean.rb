@@ -7,7 +7,7 @@ class Boolean < Struct.new(:value)
     "«#{self}»"
   end
 
-  def reducible?
-    false
+  def evaluate(environment)
+    self
   end
 end

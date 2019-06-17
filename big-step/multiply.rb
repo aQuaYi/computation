@@ -11,19 +11,11 @@ class Multiply < Struct.new(:left, :right)
     "«#{self}»"
   end
 
-  def reducible?
-    true
+  def evaluate(environment)
+    Number.new(
+      left.evaluate(environment).value *
+      right.evaluate(environment).value 
+    )
   end
 
-  def reduce(environment)
-        if left.reducible?
-      left_reduce, environment = left.reduce(environment)
-      [Multiply.new(left_reduce, right), environment]
-    elsif right.reducible?
-      right_reduce, environment = right.reduce(environment)
-      [Multiply.new(left, right.reduce(environment)), environment]
-    else
-[      Number.new(left.value * right.value),environment]
-    end
-  end
 end

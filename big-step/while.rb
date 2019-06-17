@@ -9,11 +9,12 @@ class While < Struct.new(:condition, :body)
     "«#{self}»"
   end
 
-  def reducible?
-    true
-  end
-
-  def reduce(environment)
-    [If.new(condition, Sequence.new(body, self), DoNothing.new), environment]
+  def evaluate(environment)
+    case condition.evaluate(environment)
+    when Boolean.new(true)
+      evaluate(body.evaluate(environment))
+    when Boolean.new(false)
+      environment
+    end
   end
 end

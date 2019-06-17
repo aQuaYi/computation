@@ -11,16 +11,7 @@ class Assign < Struct.new(:name, :expression)
     "«#{self}»"
   end
 
-  def reducible?
-    true
-  end
-
-  def reduce(environment)
-    if expression.reducible?
-expression_reduce, environment= expression.reduce(environment)
-      [Assign.new(name, expression_reduce), environment]
-    else
-      [DoNothing.new, environment.merge(name => expression)]
-    end
+  def evaluate(environment)
+    environment.merge({name=> expression.evaluate(environment)})
   end
 end
