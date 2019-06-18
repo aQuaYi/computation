@@ -4,6 +4,6 @@ class DFARulebook < Struct.new(:rules)
   end
 
   def rule_for(state, character)
-    rules.detect { |rule| rule.applies_to?(state, character) }
+    rules.find { |rule| rule.applies_to?(state, character) }
   end
 end

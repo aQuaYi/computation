@@ -8,8 +8,8 @@ class DFA < Struct.new(:current_state, :accept_states, :rulebook)
   end
 
   def read_string(string)
-    string.chars.each do |character|
-      read_character(character)
+    string.chars.each do |char|
+      read_character(char)
     end
   end
 end
