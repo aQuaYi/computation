@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DoNothing
+DoNothing = Struct.new do
   def to_s
     'do-nothing'
   end

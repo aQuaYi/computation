@@ -2,7 +2,7 @@
 
 require_relative 'doNothing'
 
-class Assign < Struct.new(:name, :expression)
+Assign = Struct.new(:name, :expression) do
   def to_s
     "#{name} = #{expression}"
   end

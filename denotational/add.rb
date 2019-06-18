@@ -2,7 +2,7 @@
 
 require_relative 'number'
 
-class Add < Struct.new(:left, :right)
+Add = Struct.new(:left, :right) do
   def to_s
     "#{left} + #{right}"
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class While < Struct.new(:condition, :body)
+While = Struct.new(:condition, :body) do
   def to_s
     "while (#{condition}) { #{body} }"
   end
@@ -11,7 +11,8 @@ class While < Struct.new(:condition, :body)
 
   def to_ruby
     '-> e {' \
-      " while (#{condition.to_ruby}).call(e); e = (#{body.to_ruby}).call(e); end;" \
+      " while (#{condition.to_ruby}).call(e);"\
+      " e = (#{body.to_ruby}).call(e); end;" \
       ' e' \
       ' }'
   end

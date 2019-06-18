@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Sequence < Struct.new(:first, :second)
+Sequence = Struct.new(:first, :second) do
   def to_s
     "#{first}; #{second}"
   end

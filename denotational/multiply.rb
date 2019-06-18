@@ -2,7 +2,7 @@
 
 require_relative 'number'
 
-class Multiply < Struct.new(:left, :right)
+Multiply = Struct.new(:left, :right) do
   def to_s
     "#{left} * #{right}"
   end
@@ -13,5 +13,5 @@ class Multiply < Struct.new(:left, :right)
 
   def to_ruby
     "-> e { (#{left.to_ruby}).call(e) * (#{right.to_ruby}).call(e) }"
-end
+  end
 end

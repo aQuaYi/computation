@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Variable < Struct.new(:name)
+Variable = Struct.new(:name) do
   def to_s
     name.to_s
   end
@@ -11,5 +11,5 @@ class Variable < Struct.new(:name)
 
   def to_ruby
     "-> e { e[#{name.inspect}] }"
-end
+  end
 end

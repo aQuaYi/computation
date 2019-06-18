@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Boolean < Struct.new(:value)
+Boolean = Struct.new(:value) do
   def to_s
     value.to_s
   end
