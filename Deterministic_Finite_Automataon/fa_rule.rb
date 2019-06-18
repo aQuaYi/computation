@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-class FARule < Struct.new(:state, :character, :next_state)
+FARule = Struct.new(:state, :character, :next_state) do
   def applies_to?(state, character)
     self.state == state && self.character == character
   end

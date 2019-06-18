@@ -1,4 +1,6 @@
-class DFA < Struct.new(:current_state, :accept_states, :rulebook)
+# frozen_string_literal: true
+
+DFA = Struct.new(:current_state, :accept_states, :rulebook) do
   def accepting?
     accept_states.include?(current_state)
   end

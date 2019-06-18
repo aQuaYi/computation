@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'dfa'
 
-class DFADesign < Struct.new(:start_state, :accept_states, :rulebook)
+DFADesign = Struct.new(:start_state, :accept_states, :rulebook) do
   def to_dfa
     DFA.new(start_state, accept_states, rulebook)
   end
