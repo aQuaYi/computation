@@ -10,4 +10,6 @@
 - [大步语义](big-step): 递归地执行复杂的程序
 - [指称语义](denotational): 把程序转换成别的语言再执行
 - [Treetop](treetop): 利用 Treetop 把文本转换成 AST
-- [确定性有限自动机](Deterministic_Finite_Automataon)
+- [确定性有限自动机](deterministic_finite_automata)
+- [不确定性有限自动机](nondeterministic_finite_automata)
+- [正则表达式](regular_expressions)
