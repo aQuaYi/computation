@@ -1,5 +1,7 @@
 # 计算的本质
 
+![Ruby](https://img.shields.io/badge/Ruby-2.6.3-blue.svg)
+
 ![cover](cover.jpg)
 
 作者在 [这里](https://github.com/tomstuart/computationbook) 提供了全书的完整代码。这个项目就按照自己的喜好，重新组织代码结构。
