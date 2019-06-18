@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Pattern is a module
 module Pattern
   def bracket(outer_precedence)
     if precedence < outer_precedence

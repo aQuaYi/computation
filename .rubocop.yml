@@ -4,3 +4,7 @@ Security/Eval:
   Enabled: false
 Metrics/LineLength:
   Max: 120
+Metrics/MethodLength:
+  Max: 12
+Metrics/AbcSize:
+  Max: 22

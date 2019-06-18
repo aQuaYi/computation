@@ -1,9 +1,9 @@
-require_relative '../finite_automata/fa_rule'
-require_relative '../finite_automata/nfa_design'
-require_relative '../finite_automata/nfa_rulebook'
+# frozen_string_literal: true
+
+require_relative 'nfa'
 require_relative 'pattern'
 
-class Literal < Struct.new(:character)
+Literal = Struct.new(:character) do
   include Pattern
 
   def to_s

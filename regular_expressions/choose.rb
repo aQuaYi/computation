@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require_relative '../finite_automata/fa_rule'
-require_relative '../finite_automata/nfa_design'
-require_relative '../finite_automata/nfa_rulebook'
+require_relative 'nfa'
 require_relative 'pattern'
 
-class Choose < Struct.new(:first, :second)
+Choose = Struct.new(:first, :second) do
   include Pattern
 
   def to_s
