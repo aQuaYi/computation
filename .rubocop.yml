@@ -2,3 +2,5 @@ Layout/EndOfLine:
   EnforcedStyle: lf
 Security/Eval:
   Enabled: false
+Metrics/LineLength:
+  Max: 120
