@@ -2,7 +2,7 @@
 
 require_relative 'number'
 
-class Multiply < Struct.new(:left, :right)
+Multiply = Struct.new(:left, :right) do
   def to_s
     "#{left} * #{right}"
   end
@@ -14,8 +14,7 @@ class Multiply < Struct.new(:left, :right)
   def evaluate(environment)
     Number.new(
       left.evaluate(environment).value *
-      right.evaluate(environment).value 
+      right.evaluate(environment).value
     )
   end
-
 end

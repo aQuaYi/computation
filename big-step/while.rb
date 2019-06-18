@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class While < Struct.new(:condition, :body)
+While = Struct.new(:condition, :body) do
   def to_s
     "while (#{condition}) { #{body} }"
   end

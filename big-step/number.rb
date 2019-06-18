@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Number < Struct.new(:value)
+Number = Struct.new(:value) do
   def to_s
     value.to_s
   end
@@ -9,7 +9,7 @@ class Number < Struct.new(:value)
     "«#{self}»"
   end
 
-  def evaluate(environment)
+  def evaluate(_environment)
     self
   end
 end

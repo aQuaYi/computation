@@ -1,4 +1,6 @@
-class Boolean < Struct.new(:value)
+# frozen_string_literal: true
+
+Boolean = Struct.new(:value) do
   def to_s
     value.to_s
   end
@@ -7,7 +9,7 @@ class Boolean < Struct.new(:value)
     "«#{self}»"
   end
 
-  def evaluate(environment)
+  def evaluate(_environment)
     self
   end
 end

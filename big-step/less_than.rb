@@ -2,7 +2,7 @@
 
 require_relative 'boolean'
 
-class LessThan < Struct.new(:left, :right)
+LessThan = Struct.new(:left, :right) do
   def to_s
     "#{left} < #{right}"
   end
@@ -14,8 +14,7 @@ class LessThan < Struct.new(:left, :right)
   def evaluate(environment)
     Boolean.new(
       left.evaluate(environment).value <
-      right.evaluate(environment).value 
+      right.evaluate(environment).value
     )
   end
-
 end

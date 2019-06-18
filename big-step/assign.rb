@@ -2,7 +2,7 @@
 
 require_relative 'doNothing'
 
-class Assign < Struct.new(:name, :expression)
+Assign = Struct.new(:name, :expression) do
   def to_s
     "#{name} = #{expression}"
   end
@@ -12,6 +12,6 @@ class Assign < Struct.new(:name, :expression)
   end
 
   def evaluate(environment)
-    environment.merge({name=> expression.evaluate(environment)})
+    environment.merge(name: expression.evaluate(environment))
   end
 end
