@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-DARule = Struct.new(:state, :character, :next_state,
+PDARule = Struct.new(:state, :character, :next_state,
                     :pop_character, :push_characters) do
   def applies_to?(configuration, character)
     state == configuration.state &&
