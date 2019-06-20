@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-DPDA = Struct.new(:current_configuration, :accept_states, :rulebook) do
+PDA = Struct.new(:current_configuration, :accept_states, :rulebook)
+
+# DPDA extend from PDA
+class DPDA < PDA
   def accepting?
     accept_states.include?(current_configuration.state)
   end

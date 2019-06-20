@@ -6,7 +6,7 @@ DPDARulebook = Struct.new(:rules) do
   end
 
   def rule_for(configuration, character)
-    rules.detect { |rule| rule.applies_to?(configuration, character) }
+    rules.find { |rule| rule.applies_to?(configuration, character) }
   end
 
   def applies_to?(configuration, character)

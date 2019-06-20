@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
-PDARule = Struct.new(:state, :character, :next_state,
-                    :pop_character, :push_characters) do
+PDARule = Struct.new(:state,
+                     :character,
+                     :next_state,
+                     :pop_character,
+                     :push_characters) do
   def applies_to?(configuration, character)
     state == configuration.state &&
       pop_character == configuration.stack.top &&
