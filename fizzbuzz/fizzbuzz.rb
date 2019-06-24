@@ -42,38 +42,38 @@ IS_LESS_OR_EQUAL = ->(m) { ->(n) { IS_ZERO[SUBTRACT[m][n]] } }
 
 # Combinators
 
-Y = ->(f) { ->(x) { f[x[x]] }[->(x) { f[x[x]] }] }
-Z = ->(f) { ->(x) { f[->(y) { x[x][y] }] }[->(x) { f[->(y) { x[x][y] }] }] }
+YC = ->(f) { ->(x) { f[x[x]] }[->(x) { f[x[x]] }] }
+ZC = ->(f) { ->(x) { f[->(y) { x[x][y] }] }[->(x) { f[->(y) { x[x][y] }] }] }
 
 MOD =
-  Z[lambda { |f|
-      lambda { |m|
-        lambda { |n|
-          IF[IS_LESS_OR_EQUAL[n][m]][
-       lambda { |x|
-         f[SUBTRACT[m][n]][n][x]
-       }
-          ][
-       m
-          ]
+  ZC[lambda { |f|
+       lambda { |m|
+         lambda { |n|
+           IF[IS_LESS_OR_EQUAL[n][m]][
+        lambda { |x|
+          f[SUBTRACT[m][n]][n][x]
         }
-      }
-    } ]
+           ][
+        m
+           ]
+         }
+       }
+     } ]
 
 DIV =
-  Z[lambda { |f|
-      lambda { |m|
-        lambda { |n|
-          IF[IS_LESS_OR_EQUAL[n][m]][
-       lambda { |x|
-         INCREMENT[f[SUBTRACT[m][n]][n]][x]
-       }
-          ][
-       ZERO
-          ]
+  ZC[lambda { |f|
+       lambda { |m|
+         lambda { |n|
+           IF[IS_LESS_OR_EQUAL[n][m]][
+        lambda { |x|
+          INCREMENT[f[SUBTRACT[m][n]][n]][x]
         }
-      }
-    } ]
+           ][
+        ZERO
+           ]
+         }
+       }
+     } ]
 
 # Lists
 
@@ -84,7 +84,7 @@ FIRST     = ->(l) { LEFT[RIGHT[l]] }
 REST      = ->(l) { RIGHT[RIGHT[l]] }
 
 RANGE =
-  Z[lambda { |f|
+  ZC[lambda { |f|
     lambda { |m|
       lambda { |n|
         IF[IS_LESS_OR_EQUAL[m][n]][
@@ -99,7 +99,7 @@ RANGE =
   }]
 
 FOLD =
-  Z[lambda { |f|
+  ZC[lambda { |f|
     lambda { |l|
       lambda { |x|
         lambda { |g|
@@ -138,28 +138,28 @@ B   = TEN
 F   = INCREMENT[B]
 I   = INCREMENT[F]
 U   = INCREMENT[I]
-ZED = INCREMENT[U]
+Z   = INCREMENT[U]
 
-# FIZZ     = UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[EMPTY][ZED]][ZED]][I]][F]
-FIZZ_ = ->(e) { UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[e][ZED]][ZED]][I]][F] }
+# FIZZ     = UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[EMPTY][Z]][Z]][I]][F]
+FIZZ_ = ->(e) { UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[e][Z]][Z]][I]][F] }
 FIZZ = FIZZ_[EMPTY]
-BUZZ     = UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[EMPTY][ZED]][ZED]][U]][B]
+BUZZ     = UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[EMPTY][Z]][Z]][U]][B]
 FIZZBUZZ = FIZZ_[BUZZ]
 
 TO_DIGITS =
-  Z[lambda { |f|
-      lambda { |n|
-        PUSH[
-    IF[IS_LESS_OR_EQUAL[n][DECREMENT[TEN]]][
- EMPTY
-    ][
- lambda { |x|
-   f[DIV[n][TEN]][x]
- }
-    ]
- ][MOD[n][TEN]]
-      }
-    } ]
+  ZC[lambda { |f|
+       lambda { |n|
+         PUSH[
+     IF[IS_LESS_OR_EQUAL[n][DECREMENT[TEN]]][
+  EMPTY
+     ][
+  lambda { |x|
+    f[DIV[n][TEN]][x]
+  }
+     ]
+  ][MOD[n][TEN]]
+       }
+     } ]
 
 # The FizzBuzz solution
 
