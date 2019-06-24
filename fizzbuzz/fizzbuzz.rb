@@ -176,7 +176,3 @@ SOLUTION =
       TO_DIGITS[n]
     ]]]
   }]
-
-to_array(SOLUTION).each do |p|
-  puts to_string(p)
-end; nil
