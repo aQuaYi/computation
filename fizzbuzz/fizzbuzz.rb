@@ -163,8 +163,11 @@ TO_DIGITS =
 
 # The FizzBuzz solution
 
+FIVETY = MULTIPLY[FIVE][TEN]
+HF = ADD[FIVETY][HUNDRED]
+
 SOLUTION =
-  MAP[RANGE[ONE][HUNDRED]][lambda { |n|
+  MAP[RANGE[ONE][HF]][lambda { |n|
     IF[IS_ZERO[MOD[n][FIFTEEN]]][
       FIZZBUZZ
     ][IF[IS_ZERO[MOD[n][THREE]]][
