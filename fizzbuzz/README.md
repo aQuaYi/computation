@@ -1,7 +1,7 @@
 # FizzBuzz
 
 ```shell
-...fizzbuzz>ruby solution.rb
+...fizzbuzz>ruby fizzbuzz.rb
 1
 2
 Fizz
