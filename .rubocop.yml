@@ -3,7 +3,7 @@ Layout/EndOfLine:
 Security/Eval:
   Enabled: false
 Metrics/LineLength:
-  Max: 120
+  Max: 350
 Metrics/MethodLength:
   Max: 12
 Metrics/AbcSize:
