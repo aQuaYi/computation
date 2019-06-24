@@ -18,6 +18,9 @@ True  = ->(x) { ->(_y) { x } }
 False = ->(_x) { ->(y) { y } }
 IF    = ->(b) { b }
 
+# verb
+IS_ZERO = ->(n) { n[->(_x) { False }][True] }
+
 # Pairs
 
 PAIR  = ->(x) { ->(y) { ->(f) { f[x][y] } } }
@@ -29,19 +32,13 @@ RIGHT = ->(p) { p[->(_x) { ->(y) { y } }] }
 INCREMENT = ->(n) { ->(p) { ->(x) { p[n[p][x]] } } }
 SLIDE     = ->(p) { PAIR[RIGHT[p]][INCREMENT[RIGHT[p]]] }
 DECREMENT = ->(n) { LEFT[n[SLIDE][PAIR[ZERO][ZERO]]] }
+
 ADD       = ->(m) { ->(n) { n[INCREMENT][m] } }
 SUBTRACT  = ->(m) { ->(n) { n[DECREMENT][m] } }
 MULTIPLY  = ->(m) { ->(n) { n[ADD[m]][ZERO] } }
 POWER     = ->(m) { ->(n) { n[MULTIPLY[m]][ONE] } }
 
-IS_ZERO = ->(n) { n[->(_x) { False }][True] }
-
-IS_LESS_OR_EQUAL =
-  lambda { |m|
-    lambda { |n|
-      IS_ZERO[SUBTRACT[m][n]]
-    }
-  }
+IS_LESS_OR_EQUAL = ->(m) { ->(n) { IS_ZERO[SUBTRACT[m][n]] } }
 
 # Combinators
 
@@ -143,9 +140,11 @@ I   = INCREMENT[F]
 U   = INCREMENT[I]
 ZED = INCREMENT[U]
 
-FIZZ     = UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[EMPTY][ZED]][ZED]][I]][F]
+# FIZZ     = UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[EMPTY][ZED]][ZED]][I]][F]
+FIZZ_ = ->(e) { UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[e][ZED]][ZED]][I]][F] }
+FIZZ = FIZZ_[EMPTY]
 BUZZ     = UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[EMPTY][ZED]][ZED]][U]][B]
-FIZZBUZZ = UNSHIFT[UNSHIFT[UNSHIFT[UNSHIFT[BUZZ][ZED]][ZED]][I]][F]
+FIZZBUZZ = FIZZ_[BUZZ]
 
 TO_DIGITS =
   Z[lambda { |f|
