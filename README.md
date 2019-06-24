@@ -18,3 +18,4 @@
 - [确定性下推自动机](deterministic_pushdown_automata)
 - [不确定性下推自动机](nondeterministic_pushdown_automata)
 - [确定性图灵机](deterministic_Turing_machines)
+- [FizzBuzz](fizzbuzz)
