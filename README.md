@@ -19,3 +19,4 @@
 - [不确定性下推自动机](nondeterministic_pushdown_automata)
 - [确定性图灵机](deterministic_Turing_machines)
 - [FizzBuzz](fizzbuzz)
+- [lambda 演算](lambda_calculus)
